@@ -1,0 +1,14 @@
+{
+  "name": "agar-clone-server",
+  "version": "1.0.0",
+  "description": "Classic agar.io clone authoritative game server (Node + ws)",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "license": "MIT"
+}

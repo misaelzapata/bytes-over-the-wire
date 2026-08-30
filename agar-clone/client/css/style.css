@@ -1,0 +1,99 @@
+/* AGAR-CLONE — client style.css. Nick menu, leaderboard, HUD, death overlay. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: #f6efe3; }
+body { font-family: 'Segoe UI', Roboto, Arial, sans-serif; -webkit-user-select: none; user-select: none; }
+#game { position: fixed; inset: 0; display: block; }
+.hidden { display: none !important; }
+
+/* ---------- Leaderboard (top-right) ---------- */
+#leaderboard {
+  position: fixed; top: 14px; right: 14px; width: 214px;
+  background: rgba(58, 42, 31, 0.50); color: #fbf3e8; border-radius: 12px;
+  padding: 12px 14px 13px; backdrop-filter: blur(7px);
+  border: 1px solid rgba(255, 224, 188, 0.12);
+  box-shadow: 0 10px 28px rgba(120, 78, 40, 0.16);
+}
+.lb-title {
+  text-align: center; font-weight: 800; font-size: 15px; margin-bottom: 9px;
+  letter-spacing: 1.6px; text-transform: uppercase; color: #ffcf9b;
+}
+.lb-row {
+  display: flex; gap: 8px; font-size: 14px; line-height: 1.7; opacity: 1;
+  color: #fdf6ea; padding: 0 2px; border-radius: 5px;
+}
+.lb-row .lb-rank { width: 20px; text-align: right; opacity: .62; font-weight: 700; font-variant-numeric: tabular-nums; }
+.lb-row .lb-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lb-me {
+  color: #2a1c12; font-weight: 800; opacity: 1;
+  background: #ffcf6b; margin: 1px -6px; padding: 0 8px;
+  box-shadow: 0 2px 8px rgba(255, 175, 60, 0.35);
+}
+.lb-me .lb-rank { opacity: .7; }
+
+/* ---------- Score (bottom-left) ---------- */
+#scorePanel {
+  position: fixed; left: 16px; bottom: 14px; color: #5b3d28;
+  background: rgba(255, 250, 242, 0.78); border-radius: 12px; padding: 9px 16px;
+  border: 1px solid rgba(190, 140, 96, 0.16);
+  box-shadow: 0 8px 22px rgba(120, 78, 40, 0.12);
+}
+.score-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.4px; opacity: .55; font-weight: 700; }
+#scoreVal { font-size: 30px; font-weight: 800; line-height: 1; color: #c9683f; }
+
+/* ---------- Debug (bottom-right) ---------- */
+#debug { position: fixed; right: 14px; bottom: 12px; font-size: 12px; color: rgba(91, 61, 40, 0.42); }
+
+/* ---------- Hint (bottom-center) ---------- */
+#hint {
+  position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%);
+  font-size: 13px; color: rgba(91, 61, 40, 0.55); background: rgba(255, 250, 242, 0.62);
+  padding: 6px 14px; border-radius: 20px; white-space: nowrap;
+  border: 1px solid rgba(190, 140, 96, 0.14);
+}
+#hint b { color: #c9683f; }
+
+/* ---------- Nick entry overlay ---------- */
+#nameEntry {
+  position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle at 50% 36%, #f3d6ac 0%, #e6a877 42%, #d1885c 72%, #bd6f49 100%);
+}
+.entry-card {
+  width: 344px; max-width: 90vw; background: rgba(255, 251, 245, 0.97); border-radius: 16px;
+  padding: 32px 28px; text-align: center; box-shadow: 0 14px 38px rgba(120, 68, 34, 0.20);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+}
+.entry-card .title { font-size: 40px; font-weight: 900; color: #c9683f; letter-spacing: 1px; }
+.entry-card .title span { color: #e8a24b; }
+.entry-card .subtitle { color: #8a6a52; margin: 8px 0 22px; font-size: 14px; }
+#nickInput {
+  width: 100%; padding: 13px 14px; font-size: 16px; border: 2px solid #ecdcc8;
+  border-radius: 12px; outline: none; text-align: center; transition: border-color .15s;
+  color: #5b3d28; background: #fffdf9;
+}
+#nickInput::placeholder { color: #bda78e; }
+#nickInput:focus { border-color: #f0995a; }
+#playBtn {
+  width: 100%; margin-top: 14px; padding: 14px; font-size: 17px; font-weight: 800; color: #fff;
+  background: #e07a4e; border: none; border-radius: 12px; cursor: pointer;
+  transition: background .15s, transform .05s; letter-spacing: .5px;
+  box-shadow: 0 8px 20px rgba(210, 110, 66, 0.35);
+}
+#playBtn:hover { background: #d16a3e; }
+#playBtn:active { transform: translateY(1px); }
+.entry-hint { margin-top: 18px; font-size: 12px; color: #b09272; }
+
+/* ---------- Death overlay ---------- */
+#deathCard {
+  position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(48, 28, 16, 0.55); backdrop-filter: blur(3px);
+}
+.death-inner { text-align: center; color: #fff6ec; }
+#deathText { font-size: 34px; font-weight: 800; line-height: 1.35; }
+.death-mass { font-size: 18px; font-weight: 500; opacity: .8; }
+#respawnBtn {
+  margin-top: 22px; padding: 13px 36px; font-size: 17px; font-weight: 800; color: #fff;
+  background: #e07a4e; border: none; border-radius: 12px; cursor: pointer;
+  box-shadow: 0 8px 20px rgba(210, 110, 66, 0.4);
+}
+#respawnBtn:hover { background: #d16a3e; }
+.death-hint { margin-top: 12px; font-size: 12px; opacity: .6; }

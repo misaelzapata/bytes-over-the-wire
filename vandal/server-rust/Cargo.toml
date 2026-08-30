@@ -1,0 +1,18 @@
+[package]
+name = "vandal"
+version = "1.0.0"
+edition = "2021"
+description = "VANDAL — a cooperative collaborative-mural game server (Rust + tokio)"
+
+[[bin]]
+name = "vandal"
+path = "src/main.rs"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+tokio-tungstenite = "0.26"
+futures-util = { version = "0.3", default-features = false, features = ["sink", "std"] }
+
+[profile.release]
+opt-level = 3
+lto = "thin"

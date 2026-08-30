@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>AGAR-CLONE</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <!-- Leaderboard (top-right) -->
+  <div id="leaderboard" class="hidden">
+    <div class="lb-title">Leaderboard</div>
+    <div id="lbRows"></div>
+  </div>
+
+  <!-- Score (bottom-left) -->
+  <div id="scorePanel" class="hidden">
+    <div class="score-label">Score</div>
+    <div id="scoreVal">0</div>
+  </div>
+
+  <!-- Debug (bottom-right) -->
+  <div id="debug"></div>
+
+  <!-- Controls hint (bottom-center) -->
+  <div id="hint" class="hidden">Move: mouse &nbsp;·&nbsp; <b>Space</b> split &nbsp;·&nbsp; <b>W</b> eject mass</div>
+
+  <!-- Nick-entry overlay -->
+  <div id="nameEntry">
+    <div class="entry-card">
+      <div class="title">AGAR<span>-CLONE</span></div>
+      <div class="subtitle">Eat cells. Grow. Don't get eaten.</div>
+      <input id="nickInput" type="text" maxlength="15" placeholder="Enter a name" />
+      <button id="playBtn">Play</button>
+      <div class="entry-hint">Drift toward your mouse &nbsp;·&nbsp; Space to split &nbsp;·&nbsp; W to eject</div>
+    </div>
+  </div>
+
+  <!-- Death card -->
+  <div id="deathCard" class="hidden">
+    <div class="death-inner">
+      <div id="deathText"></div>
+      <button id="respawnBtn">Respawn</button>
+      <div class="death-hint">Click or press Enter</div>
+    </div>
+  </div>
+
+  <!-- Scripts: order matters (constants -> protocol -> state -> net/input/render -> main) -->
+  <script src="js/constants.js"></script>
+  <script src="js/protocol.js"></script>
+  <script src="js/interpolate.js"></script>
+  <script src="js/net.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/scene.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+/* VANDAL — client style.css. Warm pastel HUD: entry card, toolbar, presence,
+   gallery banner, disconnect overlay. No violet/magenta/indigo anywhere. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: #E7DECB; }
+body {
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  -webkit-user-select: none; user-select: none;
+  color: #5b4a3a;
+}
+#game { position: fixed; inset: 0; display: block; touch-action: none; cursor: crosshair; }
+.hidden { display: none !important; }
+
+/* ---------- Presence (top-right) ---------- */
+#presence {
+  position: fixed; top: 14px; right: 16px;
+  background: rgba(255, 250, 240, 0.82); color: #6b5b4e;
+  border-radius: 10px; padding: 8px 14px; font-size: 14px; font-weight: 500;
+  box-shadow: 0 4px 14px rgba(90, 70, 45, 0.12);
+}
+#presence #presenceVal { font-weight: 800; color: #E86A5C; }
+
+/* ---------- Gallery banner (top-center) ---------- */
+#galleryBanner {
+  position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+  background: rgba(60, 46, 30, 0.72); color: #FFF3E2;
+  padding: 8px 20px; border-radius: 20px; font-size: 14px; letter-spacing: .5px;
+  font-weight: 600; backdrop-filter: blur(2px);
+  animation: fadeIn .4s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { #galleryBanner { animation: none; } }
+
+/* ---------- Hint (bottom-center, above toolbar) ---------- */
+#hint {
+  position: fixed; left: 50%; bottom: 78px; transform: translateX(-50%);
+  font-size: 13px; color: rgba(91, 74, 58, 0.72);
+  background: rgba(255, 250, 240, 0.6); padding: 5px 14px; border-radius: 20px;
+  white-space: nowrap;
+}
+#hint b { color: #E86A5C; }
+
+/* ---------- Toolbar (bottom-center) ---------- */
+#toolbar {
+  position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center;
+  max-width: 96vw;
+  background: rgba(255, 250, 240, 0.94); border-radius: 16px;
+  padding: 8px 12px; box-shadow: 0 10px 30px rgba(90, 70, 45, 0.20);
+}
+.tb-group { display: flex; align-items: center; gap: 4px; }
+.tb-divider { width: 1px; height: 26px; background: rgba(107, 91, 78, 0.18); margin: 0 4px; }
+
+.tb-btn {
+  width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+  border: 2px solid transparent; border-radius: 10px; background: transparent;
+  color: #6b5b4e; cursor: pointer; transition: background .12s, border-color .12s, color .12s;
+}
+.tb-btn:hover { background: rgba(232, 106, 92, 0.10); }
+.tb-btn.active { background: rgba(232, 106, 92, 0.16); border-color: #E86A5C; color: #E86A5C; }
+.tb-btn .dot { display: inline-block; border-radius: 50%; background: currentColor; }
+.tb-btn .bar { display: inline-block; width: 20px; border-radius: 6px; background: currentColor; }
+
+/* palette swatches (legacy) */
+.swatch {
+  width: 26px; height: 26px; border-radius: 50%; cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 1px 3px rgba(90, 70, 45, 0.25);
+  transition: transform .1s;
+}
+.swatch:hover { transform: scale(1.12); }
+.swatch.active { border-color: #6b5b4e; transform: scale(1.15); box-shadow: 0 0 0 2px #6b5b4e; }
+
+/* spray-can colour rack (real graffiti paint colours) */
+#swatches {
+  flex-wrap: nowrap; max-width: 44vw; overflow-x: auto; overflow-y: hidden;
+  gap: 1px; padding-bottom: 2px; scrollbar-width: thin;
+}
+#swatches::-webkit-scrollbar { height: 6px; }
+#swatches::-webkit-scrollbar-thumb { background: rgba(107,91,78,0.3); border-radius: 3px; }
+.can {
+  display: flex; flex-direction: column; align-items: center; gap: 1px;
+  width: 42px; flex: 0 0 auto; padding: 2px 1px 1px; cursor: pointer;
+  border: 2px solid transparent; border-radius: 9px; background: transparent;
+  transition: background .12s, border-color .12s, transform .1s;
+}
+.can:hover { background: rgba(232, 106, 92, 0.10); transform: translateY(-1px); }
+.can.active { border-color: #E0533F; background: rgba(232, 106, 92, 0.14); }
+.can svg { display: block; }
+.can-name {
+  font-size: 8px; line-height: 1.05; color: #8a7358; font-weight: 700;
+  max-width: 40px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.can.active .can-name { color: #E0533F; }
+
+/* zoom control (user-driven) */
+#zoomCtl {
+  position: fixed; left: 16px; bottom: 88px; z-index: 18;
+  display: flex; flex-direction: column; gap: 6px;
+}
+#zoomCtl button {
+  width: 38px; height: 38px; border: none; border-radius: 10px;
+  background: rgba(255, 250, 240, 0.94); color: #6b5b4e; font-size: 19px; font-weight: 800;
+  cursor: pointer; box-shadow: 0 6px 16px rgba(90, 70, 45, 0.20); line-height: 1;
+}
+#zoomCtl button:hover { background: #fff; color: #E0533F; }
+
+/* Street View / Map panel */
+#svPanel {
+  position: fixed; right: 16px; bottom: 74px; z-index: 20;
+  width: 306px; max-width: 92vw;
+  background: rgba(255, 250, 240, 0.98); border-radius: 14px;
+  padding: 12px 12px 10px; box-shadow: 0 14px 40px rgba(90, 70, 45, 0.28);
+  border: 1px solid rgba(107, 91, 78, 0.14);
+}
+.sv-sub { font-size: 11.5px; color: #8a7358; margin: 0 2px 9px; line-height: 1.35; }
+.sv-here {
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  width: 100%; margin: 0 0 4px; padding: 9px 12px;
+  font-size: 12.5px; font-weight: 800; color: #fff; letter-spacing: 0.2px;
+  background: linear-gradient(180deg, #F5745E, #E0533F);
+  border: none; border-radius: 10px; cursor: pointer;
+  box-shadow: 0 3px 10px rgba(224, 83, 63, 0.32);
+}
+.sv-here:hover { background: linear-gradient(180deg, #ef6650, #cf4531); }
+.sv-here:active { transform: translateY(1px); }
+.sv-controls { display: flex; gap: 8px; margin-top: 9px; }
+.sv-controls label { flex: 1; font-size: 10px; color: #8a7358; font-weight: 700; display: flex; flex-direction: column; gap: 3px; }
+.sv-controls input[type="range"] { width: 100%; accent-color: #E0533F; }
+.sv-divider { height: 1px; background: rgba(107, 91, 78, 0.15); margin: 11px 0 9px; }
+#svAddr, #svUrl {
+  flex: 1; min-width: 0; padding: 8px 10px; font-size: 12.5px; color: #5b4a3a;
+  border: 2px solid #ecdcc4; border-radius: 9px; outline: none; background: #fffdf8;
+}
+#svAddr:focus, #svUrl:focus { border-color: #F5745E; }
+#svGo, #svUrlBtn {
+  padding: 8px 12px; font-size: 12.5px; font-weight: 700; color: #fff;
+  background: #E0533F; border: none; border-radius: 9px; cursor: pointer;
+}
+#svGo:hover, #svUrlBtn:hover { background: #cf4531; }
+#svNote { font-size: 11px; color: #8a7358; min-height: 14px; margin-top: 8px; line-height: 1.35; }
+
+/* ---------- Nick entry overlay ---------- */
+#nameEntry {
+  position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle at 50% 38%, #FFD98A 0%, #F98C79 52%, #E86A5C 100%);
+}
+.entry-card {
+  width: 360px; max-width: 90vw; background: rgba(255, 250, 242, 0.97); border-radius: 18px;
+  padding: 34px 30px; text-align: center; box-shadow: 0 20px 55px rgba(120, 70, 40, 0.35);
+}
+.entry-card .title { font-size: 46px; font-weight: 900; color: #E86A5C; letter-spacing: 3px; }
+.entry-card .title span { color: #6b5b4e; }
+.entry-card .subtitle { color: #8a7358; margin: 8px 0 22px; font-size: 14px; }
+#nickInput {
+  width: 100%; padding: 13px 14px; font-size: 16px; border: 2px solid #ecdcc4;
+  border-radius: 12px; outline: none; text-align: center; color: #5b4a3a;
+  transition: border-color .15s; background: #fffdf8;
+}
+#nickInput:focus { border-color: #F98C79; }
+#playBtn {
+  width: 100%; margin-top: 14px; padding: 14px; font-size: 17px; font-weight: 700; color: #fff;
+  background: #E86A5C; border: none; border-radius: 12px; cursor: pointer; transition: background .15s;
+}
+#playBtn:hover { background: #d85647; }
+.entry-hint { margin-top: 18px; font-size: 12px; color: #b0997d; }
+
+/* ---------- Wall-surface picker ---------- */
+#bgPanel {
+  position: fixed; right: 16px; bottom: 74px; z-index: 20;
+  width: 300px; max-width: 92vw;
+  background: rgba(255, 250, 240, 0.98); border-radius: 14px;
+  padding: 12px 12px 10px; box-shadow: 0 14px 40px rgba(90, 70, 45, 0.28);
+  border: 1px solid rgba(107, 91, 78, 0.14);
+}
+.bg-title { font-size: 13px; font-weight: 700; color: #6b5b4e; margin: 0 2px 8px; }
+.bg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+.bg-opt {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 4px; border: 2px solid transparent; border-radius: 10px;
+  background: transparent; cursor: pointer;
+}
+.bg-opt:hover { background: rgba(232, 106, 92, 0.08); }
+.bg-opt.active { border-color: #E0533F; background: rgba(232, 106, 92, 0.12); }
+.bg-thumb {
+  width: 100%; height: 42px; border-radius: 7px; background-size: cover; background-position: center;
+  box-shadow: inset 0 0 0 1px rgba(107, 91, 78, 0.18);
+}
+.bg-vector {
+  background:
+    repeating-linear-gradient(0deg, #d9c7a4 0 2px, transparent 2px 14px),
+    repeating-linear-gradient(90deg, #d9c7a4 0 2px, transparent 2px 28px),
+    #f2e6cf;
+}
+.bg-label { font-size: 10.5px; color: #8a7358; font-weight: 600; }
+.bg-row { display: flex; gap: 6px; margin-top: 10px; }
+#bgUrl {
+  flex: 1; min-width: 0; padding: 8px 10px; font-size: 12.5px; color: #5b4a3a;
+  border: 2px solid #ecdcc4; border-radius: 9px; outline: none; background: #fffdf8;
+}
+#bgUrl:focus { border-color: #F5745E; }
+#bgUrlBtn {
+  padding: 8px 12px; font-size: 12.5px; font-weight: 700; color: #fff;
+  background: #E0533F; border: none; border-radius: 9px; cursor: pointer;
+}
+#bgUrlBtn:hover { background: #cf4531; }
+.bg-upload {
+  display: block; margin-top: 8px; font-size: 12px; color: #8a7358; font-weight: 600; cursor: pointer;
+}
+.bg-upload input { display: block; margin-top: 4px; font-size: 11px; width: 100%; color: #8a7358; }
+.bg-note { font-size: 11px; color: #E0533F; min-height: 14px; margin-top: 6px; }
+
+/* ---------- Disconnect overlay ---------- */
+#deathCard {
+  position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(40, 30, 18, 0.5); backdrop-filter: blur(2px);
+}
+.death-inner { text-align: center; color: #FFF3E2; }
+#deathText { font-size: 30px; font-weight: 800; line-height: 1.4; }
+.death-sub { font-size: 16px; font-weight: 500; opacity: .8; }

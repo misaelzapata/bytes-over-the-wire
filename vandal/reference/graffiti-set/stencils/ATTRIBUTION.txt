@@ -1,0 +1,36 @@
+VANDAL — reference/graffiti-set/stencils
+Sample images downloaded from Wikimedia Commons. Attribution required if reused/displayed.
+
+1) warsaw_gorilla_stencil.jpg
+   Title : Stencil Graffiti at Topiel Street in Warsaw (2).JPG
+   Author: Rovdyr (Wikimedia Commons)
+   License: CC BY-SA 3.0 / CC BY 2.5 / GFDL (multi-licensed)
+   Source: https://commons.wikimedia.org/wiki/File:Stencil_Graffiti_at_Topiel_Street_in_Warsaw_(2).JPG
+   Depicts: 1-colour gorilla silhouette stencil, Warsaw, Poland.
+
+2) bruce_lee_stencil.jpg
+   Title : Bruce Lee Stencil.jpg
+   Author: Giga Paitchadze
+   License: CC BY 2.0
+   Source: https://commons.wikimedia.org/wiki/File:Bruce_Lee_Stencil.jpg
+   Depicts: high-contrast portrait stencil of Bruce Lee, Tbilisi, Georgia.
+
+3) koi_stencil.jpg
+   Title : Koi Stencil.jpg
+   Author: JeremyNovy
+   License: CC BY-SA 4.0
+   Source: https://commons.wikimedia.org/wiki/File:Koi_Stencil.jpg
+   Depicts: multi-repeat koi fish stencil (five fish), stencil street art.
+
+4) anarchy_a_stencil.jpg
+   Title : Anarchy A Stencil.jpg
+   Author: Dfrg.msc
+   License: CC BY-SA 3.0 / 2.5 / 2.0 / 1.0 / GFDL (multi-licensed)
+   Source: https://commons.wikimedia.org/wiki/File:Anarchy_A_Stencil.jpg
+   Depicts: circle-A symbol stencil, single colour on wall.
+
+NOTE ON BANKSY: Banksy photos on Commons are cited in the catalog as visual
+reference only and were deliberately NOT downloaded — the UK grants no freedom
+of panorama for 2D graphic works, so the underlying artwork stays under the
+artist's copyright even when a photo is CC-licensed. Use only for study, not
+redistribution of the artwork image.

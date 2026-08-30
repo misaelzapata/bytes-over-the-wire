@@ -1,0 +1,14 @@
+{
+  "name": "vandal-server",
+  "version": "1.0.0",
+  "description": "VANDAL cooperative collaborative-mural server (Node + ws)",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "license": "MIT"
+}
